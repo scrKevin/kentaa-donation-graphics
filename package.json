@@ -1,0 +1,23 @@
+{
+  "name": "kentaa-donation-graphics",
+  "version": "1.0.0",
+  "description": "Graphics overlay displaying donations for Livestreams etc.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scrKevin/kentaa-donation-graphics.git"
+  },
+  "author": "scrKevin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/scrKevin/kentaa-donation-graphics/issues"
+  },
+  "homepage": "https://github.com/scrKevin/kentaa-donation-graphics#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "kentaa-api": "^1.0.4"
+  }
+}
