@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="/js/data_amount.js"></script>
+    
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Amiko&display=swap');
+      body {
+        background: #000000;
+        overflow: hidden;
+      }
+
+      .container {
+        display: inline-block;
+        background: #f6f6f63f;
+        padding: 10px;
+        font-family: Amiko;
+        font-weight: bold;
+        font-size: 20px;
+        color: #000f24;
+        text-align: center;
+        border-radius: 3px;
+      }
+
+      .amountContainer{
+        font-size: 25px;
+        padding-left: 5px;
+        letter-spacing: 8px;
+      }
+
+      .eurosign {
+        position: relative;
+        top: -5px;
+        font-size: 16px;
+      }
+
+      .target
+      {
+        font-weight: normal;
+        font-size: 16px;
+      }
+
+      .percentage {
+        font-weight: bold;
+      }
+
+      .boldText {
+        font-weight: bold;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <span class="headerText">OPGEHAALD</span><br>
+      <span class="eurosign">€</span><span class="amountContainer"></span><br>
+      <span class="target"><span class="percentage"></span>% bereikt van ons streefbedrag <span class="boldText">€ <span class="targetAmount"></span></span></span>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="/js/data_donations.js"></script>
+    
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Amiko&display=swap');
+      body {
+        background: #000000;
+        overflow: hidden;
+      }
+
+      .bannerContainer {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        display: flex;
+        opacity: 0;
+        bottom: -20px;
+        position: absolute;
+        transition: all 600ms ease-out;
+        max-height: 320px;
+        overflow: hidden;
+      }
+
+      .banner {
+        width: fit-content;
+        max-width: 1000px;
+        height: fit-content;
+        background: #0026ffa3;
+        text-align: center;
+        color: white;
+        font-weight: bold;
+        font-family: Amiko;
+        font-size: 25px;
+        border-radius: 20px;
+        box-shadow: 5px 10px 8px 10px #00000080;
+      }
+
+      
+
+      .bannerText {
+        width: fit-content;
+        color: rgb(206, 206, 206);
+        padding: 5px;
+      }
+
+      .donorName {
+        font-size: 40px;
+        color: white;
+      }
+
+      .amountBox {
+        text-align: center;
+        align-items: center;
+        margin: 0px;
+        background-color: orangered;
+        padding: 20px;
+        font-size: 50px;
+        border-radius: 16px;
+        border: 3px solid white;
+      }
+
+      .message {
+        font-size: 25px;
+        text-align: left;
+      }
+
+      .messageTD {
+        text-align: left !important;
+        padding: 20px;
+      }
+
+      .amountBoxTD {
+        width: 260px !important;
+      }
+
+      .banner td {
+        text-align: center;
+        padding: 10px;
+      }
+
+      .hideBannerContainer {
+        opacity: 0;
+        bottom: -20px;
+      }
+
+      .showBannerContainer {
+        opacity: 1;
+        bottom: 10px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="bannerContainer">
+      <table class="banner">
+        <tr>
+          <td class="amountBoxTD"><div class="amountBox"><span class="amountText">€ </span><span class="amount">11</span></div></td>
+          <td><span class="bannerText">Nieuwe donatie van:<br><span class="donorName">Tonny en Idzard</span></span></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="messageTD"><span class="message">We vinden het heel dapper dat Jildou op deze manier haar zus steunt. We wensen Sybrig en al haar naasten heel veel sterkte.</span></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
