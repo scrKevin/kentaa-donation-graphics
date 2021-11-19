@@ -7,6 +7,7 @@ let ka = new KentaaApi(API_KEY)
 const DEBUG = true;
 const POLL_INTERVAL = 30000;
 const DISPLAY_INTERVAL = 15000;
+const N_TO_SHOW_AT_STARTUP = 4;
 
 module.exports = class DonationTracker {
   
@@ -18,6 +19,7 @@ module.exports = class DonationTracker {
 
   displayInterval = null
   isDisplaying = false
+  startup = false
 
   constructor(type, id) {
     console.log("Creating new donationtracker for " + type + ": " + id)
@@ -111,6 +113,7 @@ module.exports = class DonationTracker {
   startDonationPoll() {
     console.log("Starting poll interval for donations for " + this.type + ": " + this.id)
     var history = POLL_INTERVAL;
+    this.startup = true;
     if (DEBUG) {
       // get donations of the last day.
       history = 1000*60*60*24
@@ -124,6 +127,7 @@ module.exports = class DonationTracker {
   }
 
   stopDonationPoll() {
+    this.startup = false;
     console.log("Stopping poll interval.")
     this.lastUpdate = new Date()
     if (this.pollInterval != null) {
@@ -152,6 +156,14 @@ module.exports = class DonationTracker {
       if (newDonation.payment_status == "paid") {
         this.donationQueue.push(newDonation)
         hasNewDonations = true
+      }
+    }
+    if (this.startup) {
+      this.startup = false;
+      if (this.donationQueue.length > N_TO_SHOW_AT_STARTUP) {
+        while (this.donationQueue.length > N_TO_SHOW_AT_STARTUP) {
+          this.donationQueue.shift()
+        }
       }
     }
     if (hasNewDonations) {
