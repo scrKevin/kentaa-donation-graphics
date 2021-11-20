@@ -41,6 +41,10 @@ app.get('/amount/:type/:id', function(req, res) {
   res.render('pages/amount/index');
 });
 
+app.get('/twitch', function(req, res) {
+  res.render('pages/twitch/index');
+});
+
 var httpServer = http.createServer(app);
 httpServer.listen(8080);
 //app.listen(8080);
