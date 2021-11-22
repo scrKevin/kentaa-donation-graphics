@@ -1,7 +1,9 @@
 # kentaa-donation-graphics
 
 ## Usage
-
+Live donations:
+`/donations/<:type>/<:id>`
+Type can be 'action' or 'segment'
 
 
 ## Installation
