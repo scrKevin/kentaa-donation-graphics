@@ -8,9 +8,11 @@ const certificatePath = __dirname + '/cert/fullchain.pem'
 try {
   if (fs.existsSync(keyPath) && fs.existsSync(certificatePath)) {
     httpsCheck = true
+  } else {
+    console.log("no https")
   }
 } catch(err) {
-  console.log("no https")
+  console.log(err)
 }
 
 var http = require('http');
