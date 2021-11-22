@@ -5,6 +5,7 @@
 
 
 ## Installation
+```shell
 # Install NodeJS
 
 # Install kentaa-donation-graphics
@@ -43,3 +44,4 @@ cd ~
 cd kentaa-donation-graphics
 ln -s /etc/letsencrypt/live/$domain/fullchain.pem cert/fullchain.pem
 ln -s /etc/letsencrypt/live/$domain/privkey.pem cert/privkey.pem
+```
