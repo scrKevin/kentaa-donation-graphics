@@ -60,7 +60,7 @@ module.exports = class AmountTracker {
   }
 
   async getNewAmount() {
-    console.log("Getting new amount")
+    console.log("Getting new amount for " + this.type + " (" + this.id + ")")
     
     if (this.type == "action") {
       var newAmount = await ka.actions.get(this.id)
@@ -68,9 +68,15 @@ module.exports = class AmountTracker {
     else if (this.type == "segment") {
       var newAmount = await ka.segments.get(this.id)
     }
+    else if (this.type == "team") {
+      var newAmount = await ka.teams.get(this.id)
+    }
+    else if (this.type == "project") {
+      var newAmount = await ka.projects.get(this.id)
+    }
     console.log(newAmount)
-    if (newAmount.hasOwnProperty("action")) {
-      newAmount = newAmount.action
+    if (newAmount.hasOwnProperty(this.type)) {
+      newAmount = newAmount[this.type]
       var amountToSend = 0
       var target_amountToSend = 100
       var nOfDonationsToSend = 0
@@ -91,6 +97,8 @@ module.exports = class AmountTracker {
           total_donations: nOfDonationsToSend
         }
       }
+      console.log("next amount to display:")
+      console.log(toSend)
       this.broadcast(toSend)
     }
     

@@ -137,7 +137,7 @@ module.exports = class DonationTracker {
   }
 
   async getNewDonations() {
-    console.log("Getting donations since " + this.lastUpdate.toISOString())
+    console.log("Getting donations for " + this.type + " (" + this.id + ") since " + this.lastUpdate.toISOString())
     var now = Date.now()
     
     if (this.type == "action") {
@@ -145,6 +145,12 @@ module.exports = class DonationTracker {
     }
     else if (this.type == "segment") {
       var newDonations = await ka.segment(this.id).donations.list({"updated_after": this.lastUpdate})
+    }
+    else if (this.type == "team") {
+      var newDonations = await ka.team(this.id).donations.list({"updated_after": this.lastUpdate})
+    }
+    else if (this.type == "project") {
+      var newDonations = await ka.project(this.id).donations.list({"updated_after": this.lastUpdate})
     }
     else if (this.type == "all") {
       var newDonations = await ka.donations.list({"updated_after": this.lastUpdate})
