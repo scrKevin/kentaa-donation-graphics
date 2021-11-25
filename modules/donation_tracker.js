@@ -1,5 +1,6 @@
 const WebSocket = require('ws');
 var KentaaApi = require('kentaa-api');
+
 const API_KEY = process.argv[2];
 
 let ka = new KentaaApi(API_KEY)
@@ -102,7 +103,7 @@ module.exports = class DonationTracker {
           message: message
         }
       }
-      console.log("next to display:")
+      console.log("next donation to display:")
       console.log(toSend)
       this.broadcast(toSend)
     } else {

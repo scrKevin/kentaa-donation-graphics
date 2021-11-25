@@ -29,13 +29,16 @@ var app = express();
 
 var DonationTracker = require("./modules/donation_tracker")
 var AmountTracker = require("./modules/amount_tracker")
+const QrGeneratorClass = require('./modules/qr_generator')
+
+const QrGenerator = new QrGeneratorClass()
 
 var donationTrackers = [];
 var amountTrackers = [];
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
-app.use(express.static(__dirname + '/public')); 
+app.use(express.static(__dirname + '/public'));
 
 // donations page
 app.get('/donations/:type/:id', function(req, res) {
@@ -78,10 +81,38 @@ app.get('/stopwatch/:year/:month/:day/:hour/:minute/:second', function(req, res)
   res.render('pages/stopwatch/index', {startDate: startDate});
 });
 
+// countdown page
+app.get('/countdown/:startyear/:startmonth/:startday/:starthour/:startminute/:startsecond/:endyear/:endmonth/:endday/:endhour/:endminute/:endsecond', function(req, res) {
+  var startDate = {
+    year: req.params['startyear'],
+    month: req.params['startmonth'],
+    day: req.params['startday'],
+    hour: req.params['starthour'],
+    minute: req.params['startminute'],
+    second: req.params['startsecond']
+  }
+  var endDate = {
+    year: req.params['endyear'],
+    month: req.params['endmonth'],
+    day: req.params['endday'],
+    hour: req.params['endhour'],
+    minute: req.params['endminute'],
+    second: req.params['endsecond']
+  }
+  res.render('pages/countdown/index', {startDate: startDate, endDate: endDate});
+});
+
 // /favicon.ico
 app.get('/favicon.ico', function(req, res) {
   res.sendStatus(404)
 });
+
+app.get('/api/qr/:type/:id', async function(req, res) {
+  var imgData = await QrGenerator.generate(req.params.type, req.params.id)
+  res.json({"qr": imgData})
+});
+
+
 
 app.get('/:page', function(req, res) {
   res.render('pages/' + req.params['page'] + '/index');

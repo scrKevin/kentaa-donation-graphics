@@ -1,0 +1,95 @@
+<html>
+  <head>
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+   <script>
+     var startTime = new Date(<%= startDate.year %>, <%= startDate.month - 1 %>, <%= startDate.day %>, <%= startDate.hour %>, <%= startDate.minute %>, <%= startDate.second %>, 0)
+     var endTime = new Date(<%= endDate.year %>, <%= endDate.month - 1 %>, <%= endDate.day %>, <%= endDate.hour %>, <%= endDate.minute %>, <%= endDate.second %>, 0)
+     function pad(num, size) {
+         num = num.toString();
+         while (num.length < size) num = "0" + num;
+         return num;
+     }
+
+     setInterval(function() {
+       var now = new Date();
+       var elapsed = now - startTime
+       if (elapsed >= 0) {
+         // after startTime
+         var toGo = endTime - now
+         if (toGo >= 0) {
+          var hours = Math.floor(toGo / (1000*60*60))
+          toGo -= hours * 1000*60*60
+          var minutes = Math.floor(toGo / (1000*60))
+          toGo -= minutes * 1000*60
+          if (minutes == 60) {
+            minutes = 0
+            hours += 1
+          }
+          var seconds = Math.ceil(toGo / 1000)
+          if (seconds == 60) {
+            seconds = 0
+            minutes += 1
+            if (minutes == 60) {
+              minutes = 0
+              hours += 1
+            }
+          }
+          $(".stopwatch").html(pad(hours, 2) + ":" + pad(minutes, 2) + ":" + pad(seconds, 2))
+         } else {
+          $(".stopwatch").html("00:00:00")
+         }
+        //  var hours = Math.floor(elapsed / (1000*60*60))
+        //  elapsed -= hours * 1000*60*60
+        //  var minutes = Math.floor(elapsed / (1000*60))
+        //  elapsed -= minutes * 1000*60
+        //  var seconds = Math.floor(elapsed / 1000)
+        //  $(".stopwatch").html(pad(hours, 2) + ":" + pad(minutes, 2) + ":" + pad(seconds, 2))
+       } else {
+         // before startTime
+         elapsed = -1*elapsed
+         var hours = Math.floor(elapsed / (1000*60*60))
+         elapsed -= hours * 1000*60*60
+         var minutes = Math.floor(elapsed / (1000*60))
+         elapsed -= minutes * 1000*60
+         if (minutes == 60) {
+           minutes = 0
+           hours += 1
+         }
+         var seconds = Math.ceil(elapsed / 1000)
+         if (seconds == 60) {
+           seconds = 0
+           minutes += 1
+           if (minutes == 60) {
+             minutes = 0
+             hours += 1
+           }
+         }
+         $(".stopwatch").html("START: " + pad(hours, 2) + ":" + pad(minutes, 2) + ":" + pad(seconds, 2))
+       }
+       
+     }, 240)
+   </script>
+   <style>
+     @import url('https://fonts.googleapis.com/css2?family=Amiko&display=swap');
+     body {
+       background: #00000000;
+       overflow: hidden;
+     }
+
+     .stopwatch {
+       background-color: #ffffffc6;
+       color: black;
+       font-family: Amiko;
+       font-weight: bold;
+       width: 190px;
+       text-align: center;
+       padding: 10px;
+       font-size: 35px;
+       border-radius: 5px;
+     }
+   </style>
+  </head>
+  <body>
+   <div class="stopwatch"></div>
+  </body>
+</html>

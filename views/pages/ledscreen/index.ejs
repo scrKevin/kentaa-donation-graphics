@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- <script src="/js/data_donations.js"></script> -->
+    <script>
+      $( document ).ready(function() {
+        $.ajax({
+          url: '/api/qr/team/26241',
+          type: 'GET',
+          success: function(response) {
+            console.log(response)
+            $(".qr").attr("src", response.qr);
+          }
+        });
+      });
+    </script>
+    
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Amiko&display=swap');
+      body {
+        background: #000000;
+        overflow: hidden;
+      }
+
+      .frame
+      {
+        position: absolute;
+        top: -1px;
+        left: -1px;
+        width: 386px;
+        height: 162px;
+        border: 1px solid rgb(0, 0, 0);
+      }
+
+      .bannerContainer {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        display: flex;
+        opacity: 0;
+        bottom: -20px;
+        position: absolute;
+        transition: all 600ms ease-out;
+        max-height: 320px;
+        overflow: hidden;
+      }
+
+      .banner {
+        width: fit-content;
+        max-width: 1000px;
+        height: fit-content;
+        background: #0026ffa3;
+        text-align: center;
+        color: white;
+        font-weight: bold;
+        font-family: Amiko;
+        font-size: 25px;
+        border-radius: 20px;
+        box-shadow: 5px 10px 8px 10px #00000080;
+      }
+
+      
+
+      .bannerText {
+        width: fit-content;
+        color: rgb(206, 206, 206);
+        padding: 5px;
+      }
+
+      .donorName {
+        font-size: 40px;
+        color: white;
+      }
+
+      .amountBox {
+        text-align: center;
+        align-items: center;
+        margin: 0px;
+        background-color: orangered;
+        padding: 20px;
+        font-size: 50px;
+        border-radius: 16px;
+        border: 3px solid white;
+      }
+
+      .message {
+        font-size: 25px;
+        text-align: left;
+      }
+
+      .messageTD {
+        text-align: left !important;
+        padding: 20px;
+      }
+
+      .amountBoxTD {
+        width: 260px !important;
+      }
+
+      .banner td {
+        text-align: center;
+        padding: 10px;
+      }
+
+      .hideBannerContainer {
+        opacity: 0;
+        bottom: -20px;
+      }
+
+      .showBannerContainer {
+        opacity: 1;
+        bottom: 10px;
+      }
+
+      .amountContainer {
+        position: absolute;
+        width: 400px;
+        left: 152px;
+        top: 0px;
+        transform-origin: 0px 0px;
+        transform: scale(0.5);
+        text-align: center;
+      }
+
+      .amountContainer iframe {
+        display: inline-block;
+        width: 400px;
+        border:none;
+      }
+
+      .donationContainer {
+        position:absolute;
+        top: 5px;
+        left: 101px;
+        height: 480px;
+        width: 849px;
+        transform-origin: 0px 0px;
+        transform: scale(0.33);
+      }
+
+      .donationContainer iframe {
+        display: inline-block;
+        height: 480px;
+        width: 849px;
+        border:none;
+      }
+
+      .countdownContainer {
+        position: absolute;
+        width: 400px;
+        left: 190px;
+        top: 61px;
+        transform-origin: 0px 0px;
+        transform: scale(0.5);
+      }
+
+      .countdownContainer iframe {
+        border:none;
+      }
+
+      .qr
+      {
+        position: absolute;
+        top: 3px;
+        left: 14px;
+      }
+
+      .logo {
+        width: 101px;
+        position: absolute;
+        left: 0px;
+        top: 84px;
+      }
+
+      .linkText
+      {
+        position: absolute;
+        left:3px;
+        top: 142px;
+        font-family: Amiko;
+        color: rgb(130, 130, 130);
+        font-size: 10px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class='frame'></div>
+    <div class='countdownContainer'><iframe src="/countdown/2021/11/26/8/30/0/2021/11/27/8/30/0/"></iframe></div>
+    <div class='amountContainer'><iframe src="/amount/team/26241"></iframe></div>
+    <div class='donationContainer'><iframe src="/donations/team/26241"></iframe></div>
+   
+    <img class="qr"/>
+    <img class="logo" src="/img/in_actie_voor.png"/>
+    <a class='linkText'>mvdwfoundation.nl</a>
+  </body>
+</html>
