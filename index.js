@@ -1,6 +1,6 @@
 const fs = require('fs')
 
-const httpsCheck = false
+var httpsCheck = false
 
 const keyPath = __dirname + '/cert/privkey.pem'
 const certificatePath = __dirname + '/cert/fullchain.pem'
