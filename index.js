@@ -102,6 +102,48 @@ app.get('/countdown/:startyear/:startmonth/:startday/:starthour/:startminute/:st
   res.render('pages/countdown/index', {startDate: startDate, endDate: endDate});
 });
 
+// distance page
+app.get('/distance/:startyear/:startmonth/:startday/:starthour/:startminute/:startsecond/:endyear/:endmonth/:endday/:endhour/:endminute/:endsecond/:distance/:startdistance', function(req, res) {
+  var startDate = {
+    year: req.params['startyear'],
+    month: req.params['startmonth'],
+    day: req.params['startday'],
+    hour: req.params['starthour'],
+    minute: req.params['startminute'],
+    second: req.params['startsecond']
+  }
+  var endDate = {
+    year: req.params['endyear'],
+    month: req.params['endmonth'],
+    day: req.params['endday'],
+    hour: req.params['endhour'],
+    minute: req.params['endminute'],
+    second: req.params['endsecond']
+  }
+  res.render('pages/distance/index', {startDate: startDate, endDate: endDate, distance: req.params["distance"], startDistance: req.params["startdistance"]});
+});
+
+// map page
+app.get('/map/:startyear/:startmonth/:startday/:starthour/:startminute/:startsecond/:endyear/:endmonth/:endday/:endhour/:endminute/:endsecond/:distance/:startdistance', function(req, res) {
+  var startDate = {
+    year: req.params['startyear'],
+    month: req.params['startmonth'],
+    day: req.params['startday'],
+    hour: req.params['starthour'],
+    minute: req.params['startminute'],
+    second: req.params['startsecond']
+  }
+  var endDate = {
+    year: req.params['endyear'],
+    month: req.params['endmonth'],
+    day: req.params['endday'],
+    hour: req.params['endhour'],
+    minute: req.params['endminute'],
+    second: req.params['endsecond']
+  }
+  res.render('pages/map/index', {startDate: startDate, endDate: endDate, distance: req.params["distance"], startDistance: req.params["startdistance"]});
+});
+
 // /favicon.ico
 app.get('/favicon.ico', function(req, res) {
   res.sendStatus(404)

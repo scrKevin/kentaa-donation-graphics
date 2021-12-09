@@ -1,0 +1,64 @@
+<html>
+  <head>
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+   <script>
+     var startTime = new Date(<%= startDate.year %>, <%= startDate.month - 1 %>, <%= startDate.day %>, <%= startDate.hour %>, <%= startDate.minute %>, <%= startDate.second %>, 0)
+     var endTime = new Date(<%= endDate.year %>, <%= endDate.month - 1 %>, <%= endDate.day %>, <%= endDate.hour %>, <%= endDate.minute %>, <%= endDate.second %>, 0)
+     var distance = <%= distance %>
+     var startDistance = <%= startDistance %>
+
+     //console.log(distance)
+     //console.log(startDistance)
+
+     //console.log(endTime - startTime)
+     var pace = distance / (endTime - startTime)
+     //console.log(pace)
+     function pad(num, size) {
+         num = num.toString();
+         while (num.length < size) num = "0" + num;
+         return num;
+     }
+
+     setInterval(function() {
+       var now = new Date();
+       var elapsed = now - startTime
+       if (elapsed >= 0) {
+         
+         // after startTime
+         var toGo = endTime - now
+         if (toGo >= 0) {
+          var km = pace * elapsed
+          $(".stopwatch").html((km + startDistance).toFixed(2) + "km")
+         } else {
+          $(".stopwatch").html((distance + startDistance).toFixed(2) + "km")
+         }
+       } else {
+         $(".stopwatch").html(startDistance.toFixed(2) + "km")
+       }
+       
+     }, 240)
+   </script>
+   <style>
+     @import url('https://fonts.googleapis.com/css2?family=Amiko&display=swap');
+     body {
+       background: #00000000;
+       overflow: hidden;
+     }
+
+     .stopwatch {
+       background-color: #ffffffc6;
+       color: black;
+       font-family: Amiko;
+       font-weight: bold;
+       width: 190px;
+       text-align: center;
+       padding: 10px;
+       font-size: 35px;
+       border-radius: 5px;
+     }
+   </style>
+  </head>
+  <body>
+   <div class="stopwatch"></div>
+  </body>
+</html>
