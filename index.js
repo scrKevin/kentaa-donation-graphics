@@ -1,3 +1,11 @@
+// https://mvdwf.bitwiseworkshop.nl/donations/project/17356
+// https://mvdwf.bitwiseworkshop.nl/amount/project/17356
+
+// https://mvdwf.bitwiseworkshop.nl/distance/2021/12/10/7/1/0/2021/12/10/19/0/0/50/0
+// https://mvdwf.bitwiseworkshop.nl/distance/2021/12/11/6/0/0/2021/12/11/19/0/0/50/50
+// https://mvdwf.bitwiseworkshop.nl/distance/2021/12/12/5/0/0/2021/12/12/19/0/0/50/100
+// https://mvdwf.bitwiseworkshop.nl/distance/2021/12/13/4/0/0/2021/12/13/19/0/0/50/150
+
 const fs = require('fs')
 
 var httpsCheck = false
@@ -141,7 +149,7 @@ app.get('/map/:startyear/:startmonth/:startday/:starthour/:startminute/:startsec
     minute: req.params['endminute'],
     second: req.params['endsecond']
   }
-  res.render('pages/map/index', {startDate: startDate, endDate: endDate, distance: req.params["distance"], startDistance: req.params["startdistance"]});
+  res.render('pages/map/index', {startDate: startDate, endDate: endDate, distance: req.params["distance"], startDistance: req.params["startdistance"], googleMapsApiKey: process.argv[3]});
 });
 
 // /favicon.ico
