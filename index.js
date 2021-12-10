@@ -152,6 +152,11 @@ app.get('/map/:startyear/:startmonth/:startday/:starthour/:startminute/:startsec
   res.render('pages/map/index', {startDate: startDate, endDate: endDate, distance: req.params["distance"], startDistance: req.params["startdistance"], googleMapsApiKey: process.argv[3]});
 });
 
+// title page
+app.get('/title/:titleText', function(req, res) {
+  res.render('pages/title/index', {titleText: req.params['titleText']});
+});
+
 // /favicon.ico
 app.get('/favicon.ico', function(req, res) {
   res.sendStatus(404)
