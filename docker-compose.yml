@@ -1,0 +1,12 @@
+version: "3"
+services:
+  mvdwfapps:
+    container_name: mvdwfapps
+    restart: always
+    build: .
+    volumes:
+      - .:/usr/app/
+      - /usr/app/node_modules
+    ports: ['8083:8083']
+    env_file:
+      - .env

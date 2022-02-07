@@ -1,6 +1,15 @@
 var KentaaApi = require('kentaa-api');
 const QRCode = require('qrcode')
-const API_KEY = process.argv[2];
+
+if (process.env.KENTAA_ENV == 'test') {
+  const API_KEY = process.env.KENTAA_TEST_API_KEY
+}
+else if (process.env.KENTAA_ENV == 'production') {
+  const API_KEY = process.env.KENTAA_API_KEY
+}
+else {
+  const API_KEY = process.argv[2];
+}
 
 let ka = new KentaaApi(API_KEY)
 
