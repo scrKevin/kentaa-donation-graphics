@@ -1,6 +1,8 @@
 const WebSocket = require('ws');
 var KentaaApi = require('kentaa-api');
 
+console.log("process.env.KENTAA_ENV: " + process.env.KENTAA_ENV)
+
 if (process.env.KENTAA_ENV == 'test') {
   const API_KEY = process.env.KENTAA_TEST_API_KEY
 }
