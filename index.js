@@ -174,7 +174,7 @@ app.get('/:page', function(req, res) {
 });
 
 var httpServer = http.createServer(app);
-httpServer.listen(8083);
+httpServer.listen(9040);
 
 httpServer.on('upgrade', function upgrade(request, socket, head) {
   console.log(request.url)
@@ -201,7 +201,7 @@ httpServer.on('upgrade', function upgrade(request, socket, head) {
   }
 });
 
-console.log('Http Server is listening on port 8083');
+console.log('Http Server is listening on port 9040');
 
 if (httpsCheck) {
   var httpsServer = https.createServer(credentials, app);

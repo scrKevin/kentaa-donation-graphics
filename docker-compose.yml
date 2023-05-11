@@ -7,6 +7,6 @@ services:
     volumes:
       - .:/usr/app/
       - /usr/app/node_modules
-    ports: ['8083:8083']
+    ports: ['9040:9040']
     env_file:
       - .env
