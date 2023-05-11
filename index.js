@@ -6,6 +6,11 @@
 // https://mvdwf.bitwiseworkshop.nl/distance/2021/12/12/5/0/0/2021/12/12/19/0/0/50/100
 // https://mvdwf.bitwiseworkshop.nl/distance/2021/12/13/4/0/0/2021/12/13/19/0/0/50/150
 
+
+// https://mvdwf.bitwiseworkshop.nl/donations/segment/1030
+
+
+
 const fs = require('fs')
 
 var httpsCheck = false

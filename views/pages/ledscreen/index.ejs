@@ -6,7 +6,7 @@
     <script>
       $( document ).ready(function() {
         $.ajax({
-          url: '/api/qr/team/26241',
+          url: '/api/qr/segment/1030',
           type: 'GET',
           success: function(response) {
             console.log(response)
@@ -187,9 +187,9 @@
   </head>
   <body>
     <div class='frame'></div>
-    <div class='countdownContainer'><iframe src="/countdown/2021/11/26/8/30/0/2021/11/27/8/30/0/"></iframe></div>
-    <div class='amountContainer'><iframe src="/amount/team/26241"></iframe></div>
-    <div class='donationContainer'><iframe src="/donations/team/26241"></iframe></div>
+    <!-- <div class='countdownContainer'><iframe src="/countdown/2021/11/26/8/30/0/2021/11/27/8/30/0/"></iframe></div> -->
+    <div class='amountContainer'><iframe src="/amount/segment/1030"></iframe></div>
+    <div class='donationContainer'><iframe src="/donations/segment/1030"></iframe></div>
    
     <img class="qr"/>
     <img class="logo" src="/img/in_actie_voor.png"/>
