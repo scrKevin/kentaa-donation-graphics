@@ -1,4 +1,4 @@
-var KentaaApi = require('./kentaa_api.js');
+var KentaaApi = require('kentaa-api');
 
 var API_KEY = process.argv[2];
 
