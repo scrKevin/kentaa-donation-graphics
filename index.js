@@ -41,6 +41,9 @@ const QrGeneratorClass = require('./modules/qr_generator')
 
 const QrGenerator = new QrGeneratorClass()
 
+const IdListerClass = require('./modules/id_lister')
+const IdLister = new IdListerClass()
+
 var donationTrackers = [];
 var amountTrackers = [];
 
@@ -167,7 +170,10 @@ app.get('/api/qr/:type/:id', async function(req, res) {
   res.json({"qr": imgData})
 });
 
-
+app.get('/api/idlister/:type', async function(req, res) {
+  var data = await IdLister.list(req.params.type)
+  res.json(data)
+});
 
 app.get('/:page', function(req, res) {
   res.render('pages/' + req.params['page'] + '/index');
